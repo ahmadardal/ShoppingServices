@@ -50,10 +50,55 @@ app.MapPost("/product", [Authorize(AuthenticationSchemes = JwtBearerDefaults.Aut
     return Results.Created($"/product/{product.id}", "Successfully added product!");
 });
 
+
+app.MapPut("/product/{id}", [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Administrator")] async (string id, Product product, InventoryContext db) =>
+{
+
+    var idGuid = new Guid(id);
+
+    var dbProduct = await db.Products.FindAsync(idGuid);
+
+    if (dbProduct == null)
+    {
+        return Results.NotFound("Could not find product!");
+    }
+
+    dbProduct.name = product.name;
+    dbProduct.price = product.price;
+    dbProduct.image = product.image;
+    dbProduct.available = product.available;
+
+    await db.SaveChangesAsync();
+
+    return Results.Ok("Product has been updated!");
+
+});
+
+
+app.MapDelete("/product/{id}", [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Administrator")] async (string id, InventoryContext db) =>
+{
+
+    var idGuid = new Guid(id);
+
+    var product = await db.Products.FindAsync(idGuid);
+
+    if (product == null)
+    {
+        return Results.NotFound("Product could not be found!");
+    }
+
+    db.Products.Remove(product);
+
+    await db.SaveChangesAsync();
+    return Results.Ok($"{product.name} was removed successfully!");
+});
+
 app.MapGet("/product/{id}", async (string id, InventoryContext db) =>
 {
 
-    var product = db.Products.Where((x) => x.id.ToString() == id);
+    var idGuid = new Guid(id);
+
+    var product = await db.Products.FindAsync(idGuid);
 
     if (product == null)
     {
