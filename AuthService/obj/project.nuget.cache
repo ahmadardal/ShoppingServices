@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "mNZaOTfOmFZtXBgb2oNoOr4WdAdoUNwDCmvd7i3vy+YduzaMSvnnT9UXEYQEAR0D6An345dzO3wtvQcHMIrc0Q==",
+  "dgSpecHash": "qlY0iv1b+OB+cngwdP0mu7FsFQ5vF6QqyCkr3RhkissRJmc9zFzw+BWtvPYlZHVFXOluZTA18usU/hERzztP5Q==",
   "success": true,
-  "projectFilePath": "/Users/ahmadardal/Projects/Gaddr/Systemintegration/MicroServices/AuthService/AuthService.csproj",
+  "projectFilePath": "/Users/ahmadardal/Projects/ShoppingServices/AuthService/AuthService.csproj",
   "expectedPackageFiles": [
     "/Users/ahmadardal/.nuget/packages/azure.core/1.24.0/azure.core.1.24.0.nupkg.sha512",
     "/Users/ahmadardal/.nuget/packages/azure.identity/1.6.0/azure.identity.1.6.0.nupkg.sha512",

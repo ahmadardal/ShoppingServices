@@ -3983,11 +3983,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/ahmadardal/Projects/Gaddr/Systemintegration/MicroServices/AuthService/AuthService.csproj",
+      "projectUniqueName": "/Users/ahmadardal/Projects/ShoppingServices/AuthService/AuthService.csproj",
       "projectName": "AuthService",
-      "projectPath": "/Users/ahmadardal/Projects/Gaddr/Systemintegration/MicroServices/AuthService/AuthService.csproj",
+      "projectPath": "/Users/ahmadardal/Projects/ShoppingServices/AuthService/AuthService.csproj",
       "packagesPath": "/Users/ahmadardal/.nuget/packages/",
-      "outputPath": "/Users/ahmadardal/Projects/Gaddr/Systemintegration/MicroServices/AuthService/obj/",
+      "outputPath": "/Users/ahmadardal/Projects/ShoppingServices/AuthService/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/ahmadardal/.nuget/NuGet/NuGet.Config"
