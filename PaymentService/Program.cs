@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Security.Claims;
+using Grpc.Net.Client;
+using PaymentService.Protos;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -50,7 +52,19 @@ app.UseAuthorization();
 
 app.MapPost("/payment/{productId}", async (string productId, PaymentContext db, InventoryClient inventoryClient, HttpContext http) => {
 
-    var product = await inventoryClient.GetProductAsync(productId);
+    // Vanlig HTTP GET Anrop
+    //var product = await inventoryClient.GetProductAsync(productId);
+
+    using var channel = GrpcChannel.ForAddress("http://inventoryservice");
+    var client = new GetProductService.GetProductServiceClient(channel);
+    
+    // gRPC Anrop
+
+    var productRequest = new ProductRequest {
+        ProductId=productId
+    };
+
+    var product = await client.GetProductAsync(productRequest);
 
     if (product == null) {
         return Results.NotFound("Product was not found!");
@@ -66,7 +80,7 @@ app.MapPost("/payment/{productId}", async (string productId, PaymentContext db, 
 
     payment.id = Guid.NewGuid();
     payment.userId = userId;
-    payment.total = product.price;
+    payment.total = product.Price;
     payment.date = DateTime.UtcNow;
 
     await db.Payments.AddAsync(payment);

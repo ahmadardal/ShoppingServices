@@ -1,6 +1,7 @@
 using System.Text;
 using InventoryService;
 using InventoryService.Model;
+using InventoryService.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
@@ -27,6 +28,8 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
 
 });
 
+builder.Services.AddGrpc();
+
 builder.Services.AddAuthorization();
 
 var app = builder.Build();
@@ -40,6 +43,9 @@ using (var scope = app.Services.CreateScope())
 app.UseAuthentication();
 app.UseAuthorization();
 
+
+
+app.MapGrpcService<ProductService>();
 
 // Detta API får endast användas av administratörer
 

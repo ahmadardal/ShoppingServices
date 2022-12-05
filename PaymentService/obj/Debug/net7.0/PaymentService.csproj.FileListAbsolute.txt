@@ -76,3 +76,7 @@
 /Users/ahmadardal/Projects/ShoppingServices/PaymentService/obj/Debug/net7.0/PaymentService.pdb
 /Users/ahmadardal/Projects/ShoppingServices/PaymentService/obj/Debug/net7.0/PaymentService.genruntimeconfig.cache
 /Users/ahmadardal/Projects/ShoppingServices/PaymentService/obj/Debug/net7.0/ref/PaymentService.dll
+/Users/ahmadardal/Projects/ShoppingServices/PaymentService/bin/Debug/net7.0/Google.Protobuf.dll
+/Users/ahmadardal/Projects/ShoppingServices/PaymentService/bin/Debug/net7.0/Grpc.Core.Api.dll
+/Users/ahmadardal/Projects/ShoppingServices/PaymentService/bin/Debug/net7.0/Grpc.Net.Client.dll
+/Users/ahmadardal/Projects/ShoppingServices/PaymentService/bin/Debug/net7.0/Grpc.Net.Common.dll

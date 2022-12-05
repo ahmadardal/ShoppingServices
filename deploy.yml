@@ -47,6 +47,7 @@ services:
     restart: always
     ports:
       - 3001:80
+      - 3005:123
     depends_on:
       - inventorydb
 

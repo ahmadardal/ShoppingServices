@@ -8,6 +8,9 @@
     ".NETCoreApp,Version=v7.0": {
       "PaymentService/1.0.0": {
         "dependencies": {
+          "Google.Protobuf": "3.21.10",
+          "Grpc.Net.Client": "2.50.0",
+          "Grpc.Tools": "2.50.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "7.0.0",
           "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": "7.0.0",
           "Microsoft.AspNetCore.OpenApi": "7.0.0",
@@ -54,6 +57,49 @@
           }
         }
       },
+      "Google.Protobuf/3.21.10": {
+        "runtime": {
+          "lib/net5.0/Google.Protobuf.dll": {
+            "assemblyVersion": "3.21.10.0",
+            "fileVersion": "3.21.10.0"
+          }
+        }
+      },
+      "Grpc.Core.Api/2.50.0": {
+        "dependencies": {
+          "System.Memory": "4.5.4"
+        },
+        "runtime": {
+          "lib/netstandard2.1/Grpc.Core.Api.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.50.0.0"
+          }
+        }
+      },
+      "Grpc.Net.Client/2.50.0": {
+        "dependencies": {
+          "Grpc.Net.Common": "2.50.0",
+          "Microsoft.Extensions.Logging.Abstractions": "7.0.0"
+        },
+        "runtime": {
+          "lib/net7.0/Grpc.Net.Client.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.50.0.0"
+          }
+        }
+      },
+      "Grpc.Net.Common/2.50.0": {
+        "dependencies": {
+          "Grpc.Core.Api": "2.50.0"
+        },
+        "runtime": {
+          "lib/net7.0/Grpc.Net.Common.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.50.0.0"
+          }
+        }
+      },
+      "Grpc.Tools/2.50.0": {},
       "Humanizer.Core/2.14.1": {
         "runtime": {
           "lib/net6.0/Humanizer.dll": {
@@ -713,6 +759,41 @@
       "sha512": "sha512-EycyMsb6rD2PK9P0SyibFfEhvWWttdrYhyPF4f41uzdB/44yQlV+2Wehxyg489Rj6gbPvSPgbKq0xsHJBhipZA==",
       "path": "azure.identity/1.6.0",
       "hashPath": "azure.identity.1.6.0.nupkg.sha512"
+    },
+    "Google.Protobuf/3.21.10": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-9KnY/4N1pZkfoLv8Ozho3Tf8ms09YGX1UuURqXXidAhTP/FvIHwbon8VhX4Zmxb0YrOc/aVWYMgEimBwjbWCGg==",
+      "path": "google.protobuf/3.21.10",
+      "hashPath": "google.protobuf.3.21.10.nupkg.sha512"
+    },
+    "Grpc.Core.Api/2.50.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ECZr0AqUobCIfxPYm07D/IqMbGd+Vu9KquRLLY1kMzc/xWZdqqiK0jA6t6Y5gate3lV4EiH53cvfcb6anritQg==",
+      "path": "grpc.core.api/2.50.0",
+      "hashPath": "grpc.core.api.2.50.0.nupkg.sha512"
+    },
+    "Grpc.Net.Client/2.50.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-FEQ4KdsIlknEH/8z64Im5soEdVYsHBShIGSS3CUS+KXxdtL6/uNhYx4CBE+SXoGofvetwR/dW9QGmBXu3v+enQ==",
+      "path": "grpc.net.client/2.50.0",
+      "hashPath": "grpc.net.client.2.50.0.nupkg.sha512"
+    },
+    "Grpc.Net.Common/2.50.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-xRoZfo74Cgrr/c/4Y6YCyCiKxz5JLMAi8c9nPhy1vrNXvNjj2Sdd/kSySi9VlZZbMHoDBTcn5ZlPumDPDirnHw==",
+      "path": "grpc.net.common/2.50.0",
+      "hashPath": "grpc.net.common.2.50.0.nupkg.sha512"
+    },
+    "Grpc.Tools/2.50.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-EPp2aQpoBOvzmhLqipNwk88nf3IVQ0G0DhdSlekYHGPOUCgtcqcEzD3OIWUfQPisSYxMY2HC1sQJm6Li1sVOTw==",
+      "path": "grpc.tools/2.50.0",
+      "hashPath": "grpc.tools.2.50.0.nupkg.sha512"
     },
     "Humanizer.Core/2.14.1": {
       "type": "package",

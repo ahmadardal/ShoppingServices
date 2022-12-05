@@ -1,0 +1,2 @@
+obj/Debug/net7.0/Protos/Product-serviceGrpc.cs \
+obj/Debug/net7.0/Protos/ProductService.cs: Protos/product-service.proto

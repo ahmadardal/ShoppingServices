@@ -7,6 +7,13 @@
 /Users/ahmadardal/Projects/ShoppingServices/InventoryService/bin/Debug/net7.0/InventoryService.pdb
 /Users/ahmadardal/Projects/ShoppingServices/InventoryService/bin/Debug/net7.0/Azure.Core.dll
 /Users/ahmadardal/Projects/ShoppingServices/InventoryService/bin/Debug/net7.0/Azure.Identity.dll
+/Users/ahmadardal/Projects/ShoppingServices/InventoryService/bin/Debug/net7.0/Google.Protobuf.dll
+/Users/ahmadardal/Projects/ShoppingServices/InventoryService/bin/Debug/net7.0/Grpc.AspNetCore.Server.dll
+/Users/ahmadardal/Projects/ShoppingServices/InventoryService/bin/Debug/net7.0/Grpc.AspNetCore.Server.ClientFactory.dll
+/Users/ahmadardal/Projects/ShoppingServices/InventoryService/bin/Debug/net7.0/Grpc.Core.Api.dll
+/Users/ahmadardal/Projects/ShoppingServices/InventoryService/bin/Debug/net7.0/Grpc.Net.Client.dll
+/Users/ahmadardal/Projects/ShoppingServices/InventoryService/bin/Debug/net7.0/Grpc.Net.ClientFactory.dll
+/Users/ahmadardal/Projects/ShoppingServices/InventoryService/bin/Debug/net7.0/Grpc.Net.Common.dll
 /Users/ahmadardal/Projects/ShoppingServices/InventoryService/bin/Debug/net7.0/Humanizer.dll
 /Users/ahmadardal/Projects/ShoppingServices/InventoryService/bin/Debug/net7.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
 /Users/ahmadardal/Projects/ShoppingServices/InventoryService/bin/Debug/net7.0/Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll
@@ -76,10 +83,3 @@
 /Users/ahmadardal/Projects/ShoppingServices/InventoryService/obj/Debug/net7.0/InventoryService.pdb
 /Users/ahmadardal/Projects/ShoppingServices/InventoryService/obj/Debug/net7.0/InventoryService.genruntimeconfig.cache
 /Users/ahmadardal/Projects/ShoppingServices/InventoryService/obj/Debug/net7.0/ref/InventoryService.dll
-/Users/ahmadardal/Projects/ShoppingServices/InventoryService/bin/Debug/net7.0/Google.Protobuf.dll
-/Users/ahmadardal/Projects/ShoppingServices/InventoryService/bin/Debug/net7.0/Grpc.AspNetCore.Server.dll
-/Users/ahmadardal/Projects/ShoppingServices/InventoryService/bin/Debug/net7.0/Grpc.AspNetCore.Server.ClientFactory.dll
-/Users/ahmadardal/Projects/ShoppingServices/InventoryService/bin/Debug/net7.0/Grpc.Core.Api.dll
-/Users/ahmadardal/Projects/ShoppingServices/InventoryService/bin/Debug/net7.0/Grpc.Net.Client.dll
-/Users/ahmadardal/Projects/ShoppingServices/InventoryService/bin/Debug/net7.0/Grpc.Net.ClientFactory.dll
-/Users/ahmadardal/Projects/ShoppingServices/InventoryService/bin/Debug/net7.0/Grpc.Net.Common.dll

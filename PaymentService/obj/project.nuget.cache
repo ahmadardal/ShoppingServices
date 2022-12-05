@@ -1,11 +1,16 @@
 {
   "version": 2,
-  "dgSpecHash": "nJB6AhL5gy4w4vbriug7yrkCCcrDBbXfD56aUjJaOrijU2A7RLQ0DBWv4Zu4u3AdGFWvAaV0KRQATBjQjrSPUQ==",
+  "dgSpecHash": "P/T62FStCdLsDYgGeF2e2EF1wZsmfan79JQRp5oWFubhCJgECpnLld5sgn10ny2AosjkFUoBVM4/yWyHBq03Nw==",
   "success": true,
   "projectFilePath": "/Users/ahmadardal/Projects/ShoppingServices/PaymentService/PaymentService.csproj",
   "expectedPackageFiles": [
     "/Users/ahmadardal/.nuget/packages/azure.core/1.24.0/azure.core.1.24.0.nupkg.sha512",
     "/Users/ahmadardal/.nuget/packages/azure.identity/1.6.0/azure.identity.1.6.0.nupkg.sha512",
+    "/Users/ahmadardal/.nuget/packages/google.protobuf/3.21.10/google.protobuf.3.21.10.nupkg.sha512",
+    "/Users/ahmadardal/.nuget/packages/grpc.core.api/2.50.0/grpc.core.api.2.50.0.nupkg.sha512",
+    "/Users/ahmadardal/.nuget/packages/grpc.net.client/2.50.0/grpc.net.client.2.50.0.nupkg.sha512",
+    "/Users/ahmadardal/.nuget/packages/grpc.net.common/2.50.0/grpc.net.common.2.50.0.nupkg.sha512",
+    "/Users/ahmadardal/.nuget/packages/grpc.tools/2.50.0/grpc.tools.2.50.0.nupkg.sha512",
     "/Users/ahmadardal/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
     "/Users/ahmadardal/.nuget/packages/microsoft.aspnetcore.authentication.jwtbearer/7.0.0/microsoft.aspnetcore.authentication.jwtbearer.7.0.0.nupkg.sha512",
     "/Users/ahmadardal/.nuget/packages/microsoft.aspnetcore.diagnostics.entityframeworkcore/7.0.0/microsoft.aspnetcore.diagnostics.entityframeworkcore.7.0.0.nupkg.sha512",
