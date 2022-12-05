@@ -32,11 +32,21 @@ builder.Services.AddAuthorization();
 
 var app = builder.Build();
 
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<InventoryContext>();
+    db.Database.Migrate();
+}
+
 app.UseAuthentication();
 app.UseAuthorization();
 
 
 // Detta API får endast användas av administratörer
+
+app.MapGet("/test", () => {
+    return "Hej";
+});
 
 app.MapPost("/product", [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Administrator")] async (Product product, InventoryContext db) =>
 {

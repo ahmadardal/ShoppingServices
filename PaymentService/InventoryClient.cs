@@ -14,7 +14,7 @@ namespace PaymentService
             _httpClient = httpClient;
         }
 
-        public async Task<Product> GetProductAsync(string productId)
+        public async Task<Product?> GetProductAsync(string productId)
         {
             return await _httpClient.GetFromJsonAsync<Product>($"/product/{productId}");
         }

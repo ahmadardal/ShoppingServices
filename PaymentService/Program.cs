@@ -11,8 +11,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<PaymentContext>(opt => opt.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-builder.Services.AddHttpClient<InventoryClient>(client => {
-    client.BaseAddress = new Uri("http://localhost:5259");
+builder.Services.AddHttpClient<InventoryClient>(client =>
+{
+    client.BaseAddress = new Uri("http://inventoryservice");
 });
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
@@ -40,34 +41,53 @@ builder.Services.AddAuthorization();
 
 var app = builder.Build();
 
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<PaymentContext>();
+    db.Database.Migrate();
+}
+
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapPost("/payment/{productId}", async (string productId, PaymentContext db, InventoryClient inventoryClient, HttpContext http) => {
+app.MapPost("/payment/{productId}", async (string productId, PaymentContext db, InventoryClient inventoryClient, HttpContext http) =>
+{
 
-    var product = await inventoryClient.GetProductAsync(productId);
+    try
+    {
+        var product = await inventoryClient.GetProductAsync(productId);
 
-    if (product == null) {
-        return Results.NotFound("Product was not found!");
+        if (product == null)
+        {
+            return Results.NotFound("Product was not found!");
+        }
+
+        var userId = http.User.Claims.FirstOrDefault(claim => claim.Type == ClaimTypes.NameIdentifier).Value;
+
+        if (userId == null)
+        {
+            return Results.BadRequest("Bad token!");
+        }
+
+        var payment = new Payment();
+
+        payment.id = Guid.NewGuid();
+        payment.userId = userId;
+        payment.total = product.price;
+        payment.date = DateTime.UtcNow;
+
+        await db.Payments.AddAsync(payment);
+        await db.SaveChangesAsync();
+
+        return Results.Created($"/payment/{payment.id}", "Thanks for your payment!");
+    }
+    catch (System.Exception)
+    {
+
+        return Results.BadRequest("Internal error");
     }
 
-    var userId = http.User.Claims.First(claim => claim.Type == ClaimTypes.NameIdentifier).Value;
 
-    if (userId == null) {
-        return Results.BadRequest("Bad token!");
-    }
-
-    var payment = new Payment();
-
-    payment.id = Guid.NewGuid();
-    payment.userId = userId;
-    payment.total = product.price;
-    payment.date = DateTime.UtcNow;
-
-    await db.Payments.AddAsync(payment);
-    await db.SaveChangesAsync();
-
-    return Results.Created($"/payment/{payment.id}", "Thanks for your payment!");
 
 });
 

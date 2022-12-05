@@ -1,0 +1,61 @@
+version: "3.9"
+
+services:
+  authdb:
+    image: mcr.microsoft.com/azure-sql-edge
+    restart: always
+    ports:
+      - 1433:1433
+    environment:
+      ACCEPT_EULA: Y
+      MSSQL_SA_PASSWORD: ECUtbildning2022!
+    volumes:
+      - ./volumes/Auth:/var/opt/mssql/data
+
+  inventorydb:
+    image: mcr.microsoft.com/azure-sql-edge
+    restart: always
+    ports:
+      - 1434:1434
+    environment:
+      ACCEPT_EULA: Y
+      MSSQL_SA_PASSWORD: ECUtbildning2022!
+      MSSQL_TCP_PORT: 1434
+    volumes:
+      - ./volumes/Inventory:/var/opt/mssql/data
+
+  paymentdb:
+    image: mcr.microsoft.com/azure-sql-edge
+    restart: always
+    ports:
+      - 1435:1435
+    environment:
+      ACCEPT_EULA: Y
+      MSSQL_SA_PASSWORD: ECUtbildning2022!
+      MSSQL_TCP_PORT: 1435
+    volumes:
+      - ./volumes/Payments:/var/opt/mssql/data
+
+  authservice:
+    image: authservice
+    restart: always
+    ports:
+      - 3000:80
+    depends_on:
+      - authdb
+
+  inventoryservice:
+    image: inventoryservice
+    restart: always
+    ports:
+      - 3001:80
+    depends_on:
+      - inventorydb
+
+  paymentservice:
+    image: paymentservice
+    restart: always
+    ports:
+      - 3002:80
+    depends_on:
+      - paymentdb
