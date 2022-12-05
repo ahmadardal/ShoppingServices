@@ -12,12 +12,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<PaymentContext>(opt => opt.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddHttpClient<InventoryClient>(client => {
-    client.BaseAddress = new Uri("http://localhost:5259");
+    client.BaseAddress = new Uri("http://inventoryservice");
 });
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
 {
-
 
     options.TokenValidationParameters = new TokenValidationParameters()
     {
@@ -40,6 +39,12 @@ builder.Services.AddAuthorization();
 
 var app = builder.Build();
 
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<PaymentContext>();
+    db.Database.Migrate();
+}
+
 app.UseAuthentication();
 app.UseAuthorization();
 
@@ -51,7 +56,7 @@ app.MapPost("/payment/{productId}", async (string productId, PaymentContext db, 
         return Results.NotFound("Product was not found!");
     }
 
-    var userId = http.User.Claims.First(claim => claim.Type == ClaimTypes.NameIdentifier).Value;
+    var userId = http.User.Claims.FirstOrDefault(claim => claim.Type == ClaimTypes.NameIdentifier).Value;
 
     if (userId == null) {
         return Results.BadRequest("Bad token!");
