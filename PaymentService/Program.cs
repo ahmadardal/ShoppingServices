@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Security.Claims;
+using System.Threading.Tasks;
+using Grpc.Net.Client;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -55,7 +57,10 @@ app.MapPost("/payment/{productId}", async (string productId, PaymentContext db, 
 
     try
     {
-        var product = await inventoryClient.GetProductAsync(productId);
+        //var product = await inventoryClient.GetProductAsync(productId);
+        using var channel = GrpcChannel.ForAddress("http://inventoryservice:80");
+        var client = new GetProductService.GetProductServiceClient(channel);
+        var product = await client.GetProductAsync(new ProductRequest { ProductId = productId });
 
         if (product == null)
         {
@@ -73,7 +78,7 @@ app.MapPost("/payment/{productId}", async (string productId, PaymentContext db, 
 
         payment.id = Guid.NewGuid();
         payment.userId = userId;
-        payment.total = product.price;
+        payment.total = product.Price;
         payment.date = DateTime.UtcNow;
 
         await db.Payments.AddAsync(payment);
@@ -81,9 +86,9 @@ app.MapPost("/payment/{productId}", async (string productId, PaymentContext db, 
 
         return Results.Created($"/payment/{payment.id}", "Thanks for your payment!");
     }
-    catch (System.Exception)
+    catch (System.Exception error)
     {
-
+        Console.WriteLine(error);
         return Results.BadRequest("Internal error");
     }
 

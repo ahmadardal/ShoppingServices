@@ -1,6 +1,7 @@
 using System.Text;
 using InventoryService;
 using InventoryService.Model;
+using InventoryService.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<InventoryContext>(opt => opt.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+builder.Services.AddGrpc();
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
 {
@@ -44,9 +46,7 @@ app.UseAuthorization();
 
 // Detta API får endast användas av administratörer
 
-app.MapGet("/test", () => {
-    return "Hej";
-});
+app.MapGrpcService<ProductService>();
 
 app.MapPost("/product", [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Administrator")] async (Product product, InventoryContext db) =>
 {
