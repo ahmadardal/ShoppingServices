@@ -1,0 +1,17 @@
+version: "3.9"
+
+services:
+  authservice:
+    build: ./AuthService
+    image: ahmadsregistry.azurecr.io/authservice
+    restart: always
+
+  inventoryservice:
+    build: ./InventoryService
+    image: ahmadsregistry.azurecr.io/inventoryservice
+    restart: always
+
+  paymentservice:
+    build: ./PaymentService
+    image: ahmadsregistry.azurecr.io/paymentservice
+    restart: always
