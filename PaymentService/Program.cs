@@ -55,7 +55,7 @@ app.MapPost("/payment/{productId}", async (string productId, PaymentContext db, 
     // Vanlig HTTP GET Anrop
     //var product = await inventoryClient.GetProductAsync(productId);
 
-    using var channel = GrpcChannel.ForAddress("https://appserviceinventory.icysand-e65b6a6e.northeurope.azurecontainerapps.io");
+    using var channel = GrpcChannel.ForAddress("https://appserviceinventory--gzlm01y.icysand-e65b6a6e.northeurope.azurecontainerapps.io/");
     var client = new GetProductService.GetProductServiceClient(channel);
     
     // gRPC Anrop
